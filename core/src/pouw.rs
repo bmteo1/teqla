@@ -13,6 +13,6 @@ pub fn compute_pouw(blob: &[u8], nonce: u64, suffix: &[u8]) -> String {
 
 /// Check difficulty target by counting leading zero bits (placeholder)
 pub fn meets_difficulty(_hash_hex: &str, _target_zero_bits: u8) -> bool {
-    // TODO: implement real difficulty (bit-level); placeholder: always true
+    // TODO: implement bit-level difficulty check
     true
 }
