@@ -19,7 +19,6 @@ export class TeqlaClient {
 
   async sendTx(params: SendTxParams): Promise<string> {
     // TODO: perform PoUW loop + reference tips from node
-    // placeholder returns a fake txid
     return "0x" + Math.random().toString(16).slice(2).padEnd(64, "0");
   }
 

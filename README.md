@@ -1,19 +1,19 @@
 # TEQLA
 
-**TEQLA** é uma L1 pós‑quântica, *feeless*, baseada em **DAG + Proof‑of‑Useful‑Work (PoUW)** — co‑criada por humano + IA.
+**TEQLA** is a post-quantum, *feeless* Layer 1 blockchain based on **DAG + Proof-of-Useful-Work (PoUW)** — co-created by human + AI.
 
-> **Feeless. Post‑Quantum. Useful.**
+> **Feeless. Post-Quantum. Useful.**
 
-## ✨ Diferenciais
-- **Feeless UX** – micropagamentos viáveis.
-- **Pós‑quântica** – Dilithium/SPHINCS+ desde o início.
-- **PoUW simples e verificável** – anti‑spam com utilidade mínima determinística.
-- **DX primeiro** – compatibilidade **EVM**, **SDK TypeScript** e **indexação nativa**.
+## ✨ Highlights
+- **Feeless UX** – micropayments are viable.  
+- **Post-Quantum Security** – Dilithium/SPHINCS+ signatures from day one.  
+- **Simple, Verifiable PoUW** – lightweight deterministic useful work as anti-spam.  
+- **Developer-First** – EVM compatibility, TypeScript SDK, and native indexing.  
 
-## 📚 Documentação
+## 📚 Documentation
 - [Whitepaper v0.1](./docs/whitepaper-v0.1.md)
 
-## 🛠 Estrutura do repositório
+## 🛠 Repository Structure
 ```
 teqla/
 ├─ README.md
@@ -21,37 +21,37 @@ teqla/
 ├─ .gitignore
 ├─ docs/
 │  └─ whitepaper-v0.1.md
-├─ core/              # núcleo em Rust (DAG + PoUW + P2P)
+├─ core/              # Rust core (DAG + PoUW + P2P)
 │  ├─ Cargo.toml
 │  └─ src/
 │     ├─ main.rs
 │     ├─ dag.rs
 │     ├─ pouw.rs
 │     └─ net.rs
-├─ sdk/               # SDK TypeScript para dApps
+├─ sdk/               # TypeScript SDK for dApps
 │  ├─ package.json
 │  ├─ tsconfig.json
 │  └─ src/index.ts
-├─ wallet/            # (placeholder) carteira web/mobile
-├─ infra/             # docker-compose e configs
+├─ wallet/            # (placeholder) web/mobile wallet
+├─ infra/             # docker-compose and configs
 │  └─ docker-compose.yml
-└─ tests/             # testes de caos/integração
+└─ tests/             # chaos/integration tests
 ```
 
-## 🚀 Como começar (SDK)
+## 🚀 Getting Started (SDK)
 ```bash
 cd sdk
-npm i
+npm install
 npm run build
 ```
 
-## 🔧 Como começar (Core – Rust)
+## 🔧 Getting Started (Core – Rust)
 ```bash
 cd core
 cargo run
 ```
 
-## 📈 Roadmap (resumo)
-- MVP (6 meses): DAG + PoUW + PQC + SDK + testnet pública.
-- Fase 2: wallet, indexação avançada, airdrop de devs.
-- Fase 3: evolução para PoVU (stake + utilidade verificável).
+## 📈 Roadmap (summary)
+- MVP (6 months): DAG + PoUW + PQC + SDK + public testnet.  
+- Phase 2: wallet, advanced indexing, developer incentives.  
+- Phase 3: evolution to PoVU (stake + verifiable utility).  

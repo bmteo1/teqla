@@ -1,3 +1,3 @@
 # Wallet
 
-Placeholder for web/mobile wallet.
+Placeholder for web/mobile wallet implementation.

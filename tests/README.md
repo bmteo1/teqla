@@ -1,3 +1,3 @@
 # Tests
 
-Place chaos/integration tests here.
+Chaos and integration tests will live here.

@@ -1,54 +1,54 @@
 # TEQLA — Whitepaper v0.1
 
-## 1. Visão
-TEQLA é uma L1 *feeless*, pós‑quântica, baseada em DAG + Proof‑of‑Useful‑Work (PoUW).  
-Cada transação referencia 2–4 transações anteriores (*tips*) e inclui uma prova de trabalho útil determinística e verificável.  
-Finalidade rápida via checkpoints aleatórios (VRF), sem validadores fixos.
+## 1. Vision
+TEQLA is a post-quantum, *feeless* Layer 1 blockchain built on a Directed Acyclic Graph (DAG) with Proof-of-Useful-Work (PoUW).  
+Each transaction references 2–4 previous transactions (*tips*) and includes a lightweight, deterministic, verifiable PoUW.  
+Fast finality is achieved via randomized checkpoints (VRF), without fixed validators.
 
-## 2. Motivação
-- **Taxas**: inviabilizam micropagamentos.
-- **Centralização**: validadores/PoS tendem a concentrar poder.
-- **Quântico**: ECDSA/BLS vulneráveis ao algoritmo de Shor.
-- **Utilidade**: trabalho de consenso geralmente não produz valor externo.
+## 2. Motivation
+- **Fees**: high and unpredictable in current chains.  
+- **Centralization**: PoS validators concentrate power.  
+- **Quantum threat**: ECDSA/BLS are vulnerable to Shor’s algorithm.  
+- **Lack of utility**: most consensus work produces no external value.  
 
-## 3. Arquitetura (MVP)
+## 3. Architecture (MVP)
 ### 3.1 DAG
-- Cada tx referencia `k∈[2,4]` *tips*.
-- Regras de conflito: `nonce` monotônico por conta; empate por **maior peso cumulativo**, depois menor hash.
+- Each tx references `k ∈ [2,4]` tips.  
+- Conflict rules: monotonic account nonces; tie broken by **cumulative weight**, then lowest hash.  
 
-### 3.2 PoUW (simples, determinístico)
-- **DataPool**: conjunto público de pequenos *blobs* (ex. slices de datasets).
-- **Tarefa**: `pouw = SHA3(blob_slice || nonce || txid_suffix)` com *target* de dificuldade.
-- **Objetivo**: tempo mediano ~150–300 ms em mobile (anti‑spam elástico).
-- **Verificação**: recomputação SHA3 — O(1) no tamanho do *slice* (<1 KiB).
+### 3.2 Proof-of-Useful-Work (simple, deterministic)
+- **DataPool**: public set of small blobs (e.g. dataset slices).  
+- **Task**: `pouw = SHA3(blob_slice || nonce || txid_suffix)` with adjustable difficulty target.  
+- **Goal**: median PoUW time ~150–300 ms on mobile devices.  
+- **Verification**: recompute SHA3 (O(1) for small slices <1 KiB).  
 
 ### 3.3 Checkpoints (VRF)
-- A cada `T_epoch` (~8 s), nodes calculam VRF sobre *seed* do DAG. Saídas abaixo do limiar publicam **snapshot hash**.  
-- Checkpoints *ancoram* a finalidade (reduzem prob. de rollback).
+- Every `T_epoch` (~8 s), nodes compute a VRF over the DAG seed. Outputs below threshold publish a **snapshot hash**.  
+- Checkpoints anchor finality (reduce rollback probability).  
 
-### 3.4 Criptografia Pós‑Quântica
-- **Dilithium‑II** para contas quentes; **SPHINCS+** para cofres.  
-- *Bundling* de assinaturas para reduzir overhead de rede.
+### 3.4 Post-Quantum Cryptography
+- **Dilithium-II** for hot accounts; **SPHINCS+** for cold storage.  
+- Signature bundling reduces network overhead.  
 
 ## 4. Developer Experience
-- **Compatibilidade EVM** (runtime dedicado) no SDK.
-- **SDK (TS)**: `sendTx`, `awaitFinality`, `query`.
-- **Indexação**: indexer básico com API (REST/GraphQL).
+- **EVM compatibility** (dedicated runtime).  
+- **TypeScript SDK** with `sendTx`, `awaitFinality`, `query`.  
+- **Indexing**: lightweight on-chain/off-chain hybrid with API (REST/GraphQL).  
 
-## 5. Métricas‑alvo (testnet)
-- 1k–5k TPS em laboratório.
-- Finalidade p95 ≤ 6–8 s.
-- PoUW p95 em mobile ≤ 300 ms.
+## 5. Target Metrics (testnet)
+- 1k–5k TPS in lab conditions.  
+- Finality p95 ≤ 6–8 s.  
+- Mobile PoUW p95 ≤ 300 ms.  
 
-## 6. Evolução para PoVU
-- Introdução de seleção por VRF + tarefas úteis mais ricas (com provas).
-- Bônus de utilidade; mercado de tarefas.
-- Mantendo a compatibilidade com o DAG base.
+## 6. Evolution Path to PoVU
+- Introduce VRF-based selection + richer useful tasks.  
+- Reward bonuses for utility contributions; task marketplace.  
+- Maintain DAG base compatibility.  
 
-## 7. Segurança e ameaças
-- **Spam**: mitigado por dificuldade elástica + peer scoring.
-- **Censura**: *tips* aleatórios + ausência de líderes fixos.
-- **Partições**: reconciliação por peso + checkpoints.
+## 7. Security & Threats
+- **Spam**: mitigated by elastic difficulty + peer scoring.  
+- **Censorship**: random tip selection + no fixed leaders.  
+- **Partitions**: reconciliation by cumulative weight + checkpoints.  
 
-## 8. Licença
-MIT.
+## 8. License
+MIT.  
