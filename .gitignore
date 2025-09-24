@@ -1,0 +1,22 @@
+# Node
+node_modules/
+dist/
+.npm/
+.npmrc
+
+# TypeScript
+*.tsbuildinfo
+
+# Rust
+target/
+Cargo.lock
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Env / misc
+.env
+.env.*
